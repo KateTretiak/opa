@@ -17,7 +17,7 @@ result := {"decision": "Denied", "reason": "max_active_envs_in_account_per_owner
 	not is_number(data.max_active_envs_in_account_per_owner)
 }
 
-result = {"decision": "Denied", "reason": "Owner has reached the maximum number of active environments allowed in account"} if {
+result = {"decision": "Denied", "reason": concat("", ["This account has a limitation on the concurrent environments per user. You have reached this limit of ", sprintf("%v", [data.max_active_envs_in_account_per_owner]), ". Try terminating your currently active environments before launching a new one."])} if {
     is_number(data.max_active_envs_in_account_per_owner)
 	data.max_active_envs_in_account_per_owner < input.owner_active_environments_in_account + 1
 }
