@@ -2,6 +2,6 @@ package torque.environment
 
 import future.keywords.if
 
-result = { "decision": "Deny", "reason": "deny all environments" } if {
+result = { "decision": "Denied", "reason": "deny all environments" } if {
     input
 }
